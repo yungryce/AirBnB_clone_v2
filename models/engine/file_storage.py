@@ -15,6 +15,7 @@ classes = {
             'Review': Review
             }
 
+
 class FileStorage:
     """This class manages storage of hbnb models in JSON format"""
     __file_path = 'file.json'
@@ -22,14 +23,13 @@ class FileStorage:
 
     def all(self, cls=None):
         """returns the dictionary __objects"""
-        if not cls:
-            return self.__objects
-        elif type(cls) == str:
-            return {k: v for k, v in self.__objects.items()
-                    if v.__class__.__name__ == cls}
-        else:
-            return {k: v for k, v in self.__objects.items()
-                    if v.__class__ == cls}
+        if cls is not None:
+            new_dict = {}
+            for key, value in self.__objects.items():
+                if cls == value.__class__ or cls == value.__class__.__name__:
+                    new_dict[key] = value
+            return new_dict
+        return self.__objects
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
@@ -59,29 +59,30 @@ class FileStorage:
 
     def delete(self, obj=None):
         """delete obj from __objects if it’s inside"""
-        if obj is not None:
-            del self.__objects[obj.__class__.__name__ + '.' + obj.id]
-            self.save()
+        if obj:
+            key = f"{obj.__class__.__name__}.{obj.id}"
+            if key in self.__objects:
+                del self.__objects[key]
 
     def close(self):
         """Deserialize JSON file to objects"""
         self.reload()
 
-    def get(self, cls, id):
-        """Retrieve an object"""
-        if cls is not None and type(cls) is str and id is not None and\
-           type(id) is str and cls in classes:
-            key = cls + '.' + id
-            obj = self.__objects.get(key, None)
-            return obj
-        else:
-            return None
+    # def get(self, cls, id):
+    #     """Retrieve an object"""
+    #     if cls is not None and type(cls) is str and id is not None and\
+    #        type(id) is str and cls in classes:
+    #         key = cls + '.' + id
+    #         obj = self.__objects.get(key, None)
+    #         return obj
+    #     else:
+    #         return None
 
-    def count(self, cls=None):
-        """Count number of objects in storage"""
-        total = 0
-        if type(cls) == str and cls in classes:
-            total = len(self.all(cls))
-        elif cls is None:
-            total = len(self.__objects)
-        return total
+    # def count(self, cls=None):
+    #     """Count number of objects in storage"""
+    #     total = 0
+    #     if type(cls) == str and cls in classes:
+    #         total = len(self.all(cls))
+    #     elif cls is None:
+    #         total = len(self.__objects)
+    #     return total

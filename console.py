@@ -75,7 +75,7 @@ class HBNBCommand(cmd.Cmd):
                 if pline:
                     # check for *args or **kwargs
                     if (pline[0] == '{' and pline[-1] == '}' and
-                        type(eval(pline)) is dict):
+                            type(eval(pline)) is dict):
                         _args = pline
                     else:
                         _args = pline.replace(',', '')
@@ -113,7 +113,7 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """ Overrides the emptyline method of CMD """
         pass
-    
+
     def _key_value_parser(self, args):
         """creates a dictionary from a list of strings"""
         new_dict = {}
@@ -134,7 +134,7 @@ class HBNBCommand(cmd.Cmd):
                             continue
                 new_dict[key] = value
         return new_dict
-    
+
     def do_create(self, arg):
         """Creates a new instance of a class"""
         args = arg.split()
