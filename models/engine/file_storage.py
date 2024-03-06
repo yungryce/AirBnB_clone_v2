@@ -53,7 +53,13 @@ class FileStorage:
             with open(self.__file_path, 'r') as f:
                 jo = json.load(f)
             for key in jo:
-                self.__objects[key] = classes[jo[key]["__class__"]](**jo[key])
+                # self.__objects[key] = classes[jo[key]["__class__"]]\
+                    # (**jo[key])
+                    class_name = key['__class__']
+                    if class_name in self.__current_classes:
+                        self.__objects[key] =\
+                            self.__current_classes[class_name](**key)
+        # can run to_dict() here but since it is called before saving
         except:
             pass
 
@@ -67,22 +73,3 @@ class FileStorage:
     def close(self):
         """Deserialize JSON file to objects"""
         self.reload()
-
-    # def get(self, cls, id):
-    #     """Retrieve an object"""
-    #     if cls is not None and type(cls) is str and id is not None and\
-    #        type(id) is str and cls in classes:
-    #         key = cls + '.' + id
-    #         obj = self.__objects.get(key, None)
-    #         return obj
-    #     else:
-    #         return None
-
-    # def count(self, cls=None):
-    #     """Count number of objects in storage"""
-    #     total = 0
-    #     if type(cls) == str and cls in classes:
-    #         total = len(self.all(cls))
-    #     elif cls is None:
-    #         total = len(self.__objects)
-    #     return total
