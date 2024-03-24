@@ -25,8 +25,9 @@ def cisfun(text):
     return 'C ' + text.replace('_', ' ')
 
 
+@app.route('/python/', defaults={'text': 'is cool'})
 @app.route('/python/<text>', strict_slashes=False)
-def pythoniscool(text='is cool'):
+def pythoniscool(text):
     """display “Python ”, followed by the value of the text variable"""
     return 'Python ' + text.replace('_', ' ')
 
