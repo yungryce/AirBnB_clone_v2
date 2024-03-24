@@ -24,6 +24,7 @@ def cisfun(text):
     """display “C ” followed by the value of the text variable"""
     return 'C ' + text.replace('_', ' ')
 
+
 @app.route('/python/', defaults={'text': 'is cool'})
 @app.route('/python/<text>', strict_slashes=False)
 def pythoniscool(text):
@@ -41,6 +42,7 @@ def imanumber(n):
 def numbersandtemplates(n):
     """display a HTML page only if n is an integer"""
     return render_template('5-number.html', n=n)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='5000')
