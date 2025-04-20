@@ -1,0 +1,85 @@
+{
+  "project_identity": {
+    "name": "AirBnB Clone v2",
+    "type": "education",
+    "scope": "repository",
+    "is_independent": false,
+    "version": "v2",
+    "related_versions": ["v1", "v3", "v4"],
+    "description": "AirBnB clone with database storage, web server configuration, and Flask web application"
+  },
+  "tech_stack": {
+    "primary": ["Python 3.x", "MySQL", "SQLAlchemy", "Flask"],
+    "secondary": ["HTML5", "CSS3", "Fabric", "Nginx", "JSON"],
+    "key_libraries": ["cmd", "datetime", "uuid", "sqlalchemy", "fabric", "flask"]
+  },
+  "skill_manifest": {
+    "technical": [
+      "Object-Oriented Programming",
+      "Command Line Interface Development",
+      "Serialization/Deserialization",
+      "Database Design and ORM Integration",
+      "Web Server Configuration",
+      "Deployment Automation",
+      "MVC Architecture",
+      "RESTful API Development",
+      "Server Configuration Management"
+    ],
+    "domain": [
+      "Property Management",
+      "Accommodation Search",
+      "User Management",
+      "Deployment Operations",
+      "Configuration Management"
+    ]
+  },
+  "components": {
+    "models": {
+      "type": "core",
+      "path": "/models",
+      "description": "Data models with both file and database storage capabilities"
+    },
+    "console": {
+      "type": "interface",
+      "path": "/console.py",
+      "description": "Enhanced command-line interpreter for CRUD operations"
+    },
+    "web_flask": {
+      "type": "api",
+      "path": "/web_flask",
+      "description": "Flask web application routes and templates"
+    },
+    "tests": {
+      "type": "quality",
+      "path": "/tests",
+      "description": "Unit and integration tests"
+    },
+    "deployment": {
+      "type": "operations",
+      "path": "/*.py, /*.sh",
+      "description": "Server setup and deployment scripts"
+    }
+  },
+  "progression": {
+    "v1": {
+      "description": "Command-line functionality with file storage",
+      "tech_stack": ["Python", "JSON"],
+      "features": ["BaseModel", "File Storage", "Command Interpreter", "Static Web Pages"]
+    },
+    "v2": {
+      "description": "Database integration and deployment automation",
+      "tech_stack": ["Python", "MySQL", "SQLAlchemy", "Flask", "Fabric"],
+      "features": ["ORM Mapping", "MySQL Storage Engine", "Web Server Configuration", "Flask Web Application", "Automated Deployment"]
+    },
+    "v3": {
+      "description": "RESTful API (planned)",
+      "tech_stack": ["Python", "Flask", "RESTful API"],
+      "features": ["API Endpoints", "CORS"]
+    },
+    "v4": {
+      "description": "Dynamic web interface (planned)",
+      "tech_stack": ["JavaScript", "jQuery", "HTML5", "CSS3"],
+      "features": ["Dynamic Content Loading", "API Integration"]
+    }
+  }
+}

@@ -15,6 +15,7 @@ if models.type_storage == 'db':
                                  ForeignKey('amenities.id'),
                                  primary_key=True, nullable=False))
 
+
 class Place(BaseModel, Base):
     """Representation of Place """
     if models.type_storage == 'db':
